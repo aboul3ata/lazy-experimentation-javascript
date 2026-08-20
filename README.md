@@ -3,7 +3,7 @@
 Lazy Experimentation is the thin product layer over GrowthBook. GrowthBook owns feature loading, caching, targeting, hashing, assignment, and exposure lifecycle; this package points it at Lazy's control plane and adds outcome capture.
 
 ```bash
-npm install github:aboul3ata/lazy-experimentation-javascript#v0.2.0
+npm install @lazyweb/sdk@0.2.0
 ```
 
 ```ts
