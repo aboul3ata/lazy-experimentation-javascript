@@ -1,7 +1,8 @@
 {
-  "name": "@lazyweb/sdk",
-  "version": "0.2.0",
-  "description": "Lazy Experimentation for JavaScript and TypeScript, powered by GrowthBook",
+  "name": "@lazyweb/experimentation-javascript",
+  "version": "0.1.0",
+  "description": "Lazy Experimentation for JavaScript and TypeScript",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aboul3ata/lazy-experimentation-javascript.git"
