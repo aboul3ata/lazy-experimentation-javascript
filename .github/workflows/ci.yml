@@ -17,7 +17,7 @@ jobs:
     - run: npm install --global npm@11.5.2
     - run: npm ci --ignore-scripts
     - run: npm run verify
-    timeout-minutes: 3
+    timeout-minutes: ${{ github.event_name == 'pull_request' && 2 || 10 }}
 permissions:
   contents: read
 concurrency:
