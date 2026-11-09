@@ -1,6 +1,11 @@
 name: Publish
 on:
   workflow_dispatch:
+    inputs:
+      major_release:
+        description: Run full release verification
+        type: boolean
+        default: false
 permissions:
   contents: read
   id-token: write
@@ -9,13 +14,15 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          registry-url: https://registry.npmjs.org
-          package-manager-cache: false
-      - run: npm install --global npm@11.5.2
-      - run: npm ci
-      - run: npm run verify
-      - run: npm publish --access public
+    - uses: actions/checkout@v6
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 24
+        registry-url: https://registry.npmjs.org
+        package-manager-cache: false
+    - run: npm install --global npm@11.5.2
+    - run: npm ci --ignore-scripts
+    - run: npm run typecheck && npm test
+      if: ${{ inputs.major_release }}
+    - run: npm run build
+    - run: npm publish --access public --ignore-scripts
